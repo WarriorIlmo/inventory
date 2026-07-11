@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#A11D2E">
+  <title>DPS-INVENTORY</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon-96.png">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animation.css">
+  <style>
+    .splash-screen {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 34%, #C22638 78%, #6B0F1A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-5);
+    }
+    .splash-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      padding-top: var(--space-7);
+    }
+    .splash-brandrow {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .splash-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 22px rgba(107,15,26,0.35));
+      animation: logo-entrance 0.9s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .splash-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 40px;
+      letter-spacing: 4px;
+      color: var(--color-red-700);
+      animation: text-slide-in 0.9s 0.15s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .splash-tagline {
+      color: var(--color-ink-700);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-align: center;
+      max-width: 260px;
+      animation: fade-in 1s 0.4s both;
+    }
+    .splash-footer {
+      width: 100%;
+      max-width: 420px;
+      padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom));
+      animation: fade-slide-up 0.8s 0.3s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .splash-footer .btn {
+      background: var(--color-white);
+      color: var(--color-red-700);
+    }
+    .splash-version {
+      text-align: center;
+      color: rgba(255,255,255,0.85);
+      font-size: 11px;
+      margin-top: var(--space-3);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen splash-screen">
+    <div class="splash-content">
+      <div class="splash-brandrow">
+        <img src="assets/images/logo.png" alt="DPS-INVENTORY logo" class="splash-logo"
+             onerror="this.style.display='none'">
+        <div class="splash-brand">STORE</div>
+      </div>
+      <div class="splash-tagline">Offline-first inventory management for your store, in your pocket.</div>
+    </div>
+    <div class="splash-footer">
+      <button class="btn btn-primary btn-lg btn-block ripple-surface" id="getStartedBtn">
+        Get Started
+      </button>
+      <div class="splash-version">DPS-INVENTORY v1.0 · Works 100% Offline</div>
+    </div>
+  </div>
+
+  <!-- Injected by the Cordova CLI at build time; safe to 404 in plain-browser testing -->
+  <script src="cordova.js" onerror="this.remove()"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    document.getElementById('getStartedBtn').addEventListener('click', () => {
+      window.location.href = 'login.html';
+    });
+    DPSUi.initRipples();
+  </script>
+</body>
+</html>

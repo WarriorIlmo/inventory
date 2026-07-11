@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#A11D2E">
+  <title>DPS-INVENTORY · PIN Login</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animation.css">
+  <style>
+    .pin-screen {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 30%, #C22638 82%, #6B0F1A 100%);
+      align-items: center;
+      padding: var(--space-6) var(--space-5);
+      justify-content: flex-start;
+    }
+    .pin-header { text-align: center; margin-top: var(--space-6); }
+    .pin-header img { width: 56px; height: 56px; margin: 0 auto var(--space-3); filter: drop-shadow(0 6px 14px rgba(107,15,26,0.3)); }
+    .pin-title { font-size: 20px; color: var(--color-red-700); }
+    .pin-sub { font-size: 13px; color: var(--color-ink-700); margin-top: 4px; }
+
+    .pin-dots {
+      display: flex;
+      gap: 18px;
+      margin: var(--space-6) 0 var(--space-6);
+    }
+    .pin-dot {
+      width: 18px; height: 18px; border-radius: 50%;
+     /* border: 2px solid var(--color-white);*/
+      border: 2px solid #d10f75;
+      background: transparent;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .pin-dot.filled {
+      /*background: var(--color-white);*/
+      background: #d10f75;
+      animation: pin-fill-pop 0.25s ease;
+    }
+
+    .pin-keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 72px);
+      gap: 18px;
+      margin-top: auto;
+      margin-bottom: var(--space-6);
+      justify-content: center;
+    }
+    .pin-key {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.16);
+      color: var(--color-white);
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pin-key:active { background: rgba(255,255,255,0.3); transform: scale(0.95); }
+    .pin-key.pin-key-empty { background: transparent; pointer-events: none; }
+    .pin-key .material-icons { font-size: 26px; }
+
+    .pin-forgot {
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+      text-decoration: underline;
+      margin-top: var(--space-2);
+    }
+  </style>
+</head>
+<body>
+  <div class="screen pin-screen">
+    <div class="pin-header anim-fade-slide-up">
+      <img src="assets/icons/icon-192.png" alt="" onerror="this.style.display='none'">
+      <h2 class="pin-title" id="pinTitle">Enter PIN</h2>
+      <p class="pin-sub" id="pinSub">Enter your 4-digit PIN to continue</p>
+    </div>
+
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+    </div>
+
+    <div class="pin-keypad" id="pinKeypad">
+      <button class="pin-key ripple-surface" data-key="1">1</button>
+      <button class="pin-key ripple-surface" data-key="2">2</button>
+      <button class="pin-key ripple-surface" data-key="3">3</button>
+      <button class="pin-key ripple-surface" data-key="4">4</button>
+      <button class="pin-key ripple-surface" data-key="5">5</button>
+      <button class="pin-key ripple-surface" data-key="6">6</button>
+      <button class="pin-key ripple-surface" data-key="7">7</button>
+      <button class="pin-key ripple-surface" data-key="8">8</button>
+      <button class="pin-key ripple-surface" data-key="9">9</button>
+      <div class="pin-key pin-key-empty"></div>
+      <button class="pin-key ripple-surface" data-key="0">0</button>
+      <button class="pin-key ripple-surface" data-key="back"><span class="material-icons">backspace</span></button>
+    </div>
+  </div>
+
+  <script src="cordova.js" onerror="this.remove()"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pin.js"></script>
+  <script>DPSUi.initRipples();</script>
+</body>
+</html>

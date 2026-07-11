@@ -1,0 +1,55 @@
+/* ==========================================================================
+   DPS-INVENTORY — Responsive Rules
+   Mobile-first. Breakpoints tuned for common Android device widths.
+   ========================================================================== */
+
+/* Small phones (<= 340px, e.g. older/compact Android) */
+@media (max-width: 340px) {
+  .stat-card .stat-value { font-size: 22px; }
+  .btn-lg { padding: 15px 24px; font-size: 15px; }
+  .drawer-header img { width: 44px; height: 44px; }
+  .splash-logo { width: 96px !important; }
+  .splash-brand { font-size: 30px !important; }
+}
+
+/* Standard phones */
+@media (min-width: 341px) and (max-width: 430px) {
+  /* Default sizing already tuned for this range */
+}
+
+/* Large phones / phablets */
+@media (min-width: 431px) {
+  .view { padding: var(--space-5) var(--space-5); }
+  .stat-grid { gap: var(--space-4); }
+}
+
+/* Tablets & foldables */
+@media (min-width: 600px) {
+  .stat-grid { grid-template-columns: repeat(3, 1fr); }
+  .modal { max-width: 520px; }
+  .drawer { max-width: 340px; }
+  .content { max-width: 720px; margin: 0 auto; width: 100%; }
+  .topbar-inner { max-width: 720px; margin: 0 auto; width: 100%; }
+}
+
+@media (min-width: 900px) {
+  .stat-grid { grid-template-columns: repeat(4, 1fr); }
+  .content { max-width: 860px; }
+}
+
+/* Short screens (landscape phones) */
+@media (max-height: 560px) {
+  .pin-keypad { transform: scale(0.85); transform-origin: top center; }
+  .splash-content { padding-top: var(--space-5) !important; }
+}
+
+/* Safe area handling for notches / gesture bars */
+.topbar { padding-top: env(safe-area-inset-top); height: calc(var(--topbar-h) + env(safe-area-inset-top)); }
+.fab { bottom: calc(28px + env(safe-area-inset-bottom)); }
+.toast-stack { bottom: calc(24px + env(safe-area-inset-bottom)); }
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-width: 900px) {
+  .stat-grid { grid-template-columns: repeat(4, 1fr); }
+  .pin-dots { margin-bottom: var(--space-3) !important; }
+}
